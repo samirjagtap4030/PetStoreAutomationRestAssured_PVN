@@ -1,2 +1,6 @@
-cd F:\mkt\pawan sir\Pawan sir Udemy\A_Udemy_Api Testing_pawn_rahul_postman_restassured\Section 4 API Testing Testing using RestAssured\26. Rest Assure Framework Project (Part 3)\Project+files\Project files
-mvn test
+@echo off
+REM Change to the folder where this batch file is located (project root)
+cd /d "%~dp0"
+
+REM Run the test suite
+mvn clean compile test
