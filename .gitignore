@@ -1,0 +1,29 @@
+# ===== Maven build output =====
+target/
+
+# ===== Generated test output / reports / logs =====
+test-output/
+reports/
+logs/
+*.log
+
+# ===== Eclipse IDE files =====
+.settings/
+.project
+.classpath
+.factorypath
+
+# ===== IntelliJ IDEA files =====
+.idea/
+*.iml
+
+# ===== VS Code =====
+.vscode/
+
+# ===== OS junk files =====
+Thumbs.db
+.DS_Store
+
+# ===== Temp / dump files =====
+*.dumpstream
+*.tmp
