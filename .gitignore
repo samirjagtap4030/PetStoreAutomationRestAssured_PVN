@@ -27,3 +27,6 @@ Thumbs.db
 # ===== Temp / dump files =====
 *.dumpstream
 *.tmp
+
+# ===== Local-only helper scripts (not for GitHub) =====
+git-push.bat
