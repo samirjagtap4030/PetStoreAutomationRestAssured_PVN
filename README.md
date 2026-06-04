@@ -151,7 +151,7 @@ sequenceDiagram
 |-------------|---------|-------|
 | **JDK** | 21 | `java -version` should report 21 |
 | **Maven** | 3.8+ | `mvn -v` |
-| **IDE** | Eclipse 2024+ / IntelliJ | Eclipse `.project` / `.classpath` included |
+| **IDE** | Eclipse 2026 / IntelliJ | Eclipse `.project` / `.classpath` included |
 | **TestNG plugin** | Latest | Required to run `testng.xml` inside the IDE |
 | **Internet** | Required | Tests hit the public `petstore.swagger.io` API |
 
@@ -187,11 +187,6 @@ There are three supported ways to execute the suite.
 
 ### 2️⃣ Run tests using `pom.xml` inside Eclipse
 - Right-click **`pom.xml`** → **Run As** → **Maven test**.
-- Or use the Maven goal:
-
-```bash
-mvn test
-```
 
 ### 3️⃣ Run tests using `pom.xml` outside Eclipse (Command Prompt / terminal)
 
