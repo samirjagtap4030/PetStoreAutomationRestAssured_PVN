@@ -12,6 +12,7 @@ import com.github.javafaker.Faker;
 import api.endpoints.UserEndPoints;
 import api.payload.User;
 import io.restassured.response.Response;
+import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class UserTests {
 
@@ -49,7 +50,27 @@ public class UserTests {
 		response.then().log().all();
 		
 		Assert.assertEquals(response.getStatusCode(),200);
+		// 2. Status line validation
+	    Assert.assertEquals(response.getStatusLine(), "HTTP/1.1 200 OK");
+
+	    // 3. Response time validation 
+	    Assert.assertTrue(response.getTime() < 5000, "Response took too long");
+
+	    // 4. Header validations
+	    Assert.assertEquals(response.getContentType(), "application/json");
+	    Assert.assertTrue(response.getHeader("Server").contains("Jetty"));
+	    Assert.assertTrue(response.getHeader("Access-Control-Allow-Methods").contains("POST"));
+
+	    // 5. Body field validations
+	    Assert.assertEquals(response.jsonPath().getInt("code"), 200);
+	    Assert.assertEquals(response.jsonPath().getString("type"), "unknown");
+	    Assert.assertNotNull(response.jsonPath().getString("message"), "message should not be null");
+	    Assert.assertFalse(response.jsonPath().getString("message").isEmpty(), "message should not be empty");
 		
+	    // 6. JSON Schema validation
+	    response.then().assertThat()
+	            .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/createUserSchema.json"));
+	    
 		logger.info("**********User is creatged  ***************");
 			
 	}
